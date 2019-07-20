@@ -29,15 +29,15 @@ all nodes as the base mount point for provisoned datasets.
 The provisioner will be installed in the `kube-system` namespace by default.
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/asteven/local-zfs-provisioner/master/deploy/rbac.yaml
-kubectl apply -f https://raw.githubusercontent.com/asteven/local-zfs-provisioner/master/deploy/deployment.yaml
+kubectl apply -f https://raw.githubusercontent.com/pavel-tarasenko/local-zfs-provisioner/master/deploy/rbac.yaml
+kubectl apply -f https://raw.githubusercontent.com/pavel-tarasenko/local-zfs-provisioner/master/deploy/deployment.yaml
 ```
 
 Create a suitable configmap and add it to the cluster. You will have to change this to work
 with your zfs pools and datasets.
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/asteven/local-zfs-provisioner/master/deploy/example-config.yaml
+kubectl apply -f https://raw.githubusercontent.com/pavel-tarasenko/local-zfs-provisioner/master/deploy/example-config.yaml
 ```
 
 ## Usage
@@ -45,8 +45,8 @@ kubectl apply -f https://raw.githubusercontent.com/asteven/local-zfs-provisioner
 Create a `hostPath` backed Persistent Volume Claim and a pod that uses it:
 
 ```
-kubectl create -f https://raw.githubusercontent.com/asteven/local-zfs-provisioner/master/example/pvc.yaml
-kubectl create -f https://raw.githubusercontent.com/asteven/local-zfs-provisioner/master/example/pod.yaml
+kubectl create -f https://raw.githubusercontent.com/pavel-tarasenko/local-zfs-provisioner/master/example/pvc.yaml
+kubectl create -f https://raw.githubusercontent.com/pavel-tarasenko/local-zfs-provisioner/master/example/pod.yaml
 ```
 
 You should see that the PV has been created:
@@ -82,13 +82,13 @@ kubectl exec volume-test-zfs -- sh -c "echo local-zfs-test > /data/test"
 Now delete the pod again:
 
 ```
-kubectl delete -f https://raw.githubusercontent.com/asteven/local-zfs-provisioner/master/example/pod.yaml
+kubectl delete -f https://raw.githubusercontent.com/pavel-tarasenko/local-zfs-provisioner/master/example/pod.yaml
 ```
 
 After confirming that the pod is gone, recreated it:
 
 ```
-kubectl create -f https://raw.githubusercontent.com/asteven/local-zfs-provisioner/master/example/pod.yaml
+kubectl create -f https://raw.githubusercontent.com/pavel-tarasenko/local-zfs-provisioner/master/example/pod.yaml
 ```
 
 Check the volume content:
@@ -101,8 +101,8 @@ local-zfs-test
 Delete the pod and the pvc:
 
 ```
-kubectl delete -f https://raw.githubusercontent.com/asteven/local-zfs-provisioner/master/example/pod.yaml
-kubectl delete -f https://raw.githubusercontent.com/asteven/local-zfs-provisioner/master/example/pvc.yaml
+kubectl delete -f https://raw.githubusercontent.com/pavel-tarasenko/local-zfs-provisioner/master/example/pod.yaml
+kubectl delete -f https://raw.githubusercontent.com/pavel-tarasenko/local-zfs-provisioner/master/example/pvc.yaml
 ```
 
 The volume content stored on the node will be automatically cleaned up. You can check the log of the `local-zfs-provisioner-xxx` pod for details.
@@ -162,8 +162,8 @@ Before uninstallation, make sure that the PVs created by the provisioner have al
 To uninstall, execute:
 
 ```
-kubectl delete -f https://raw.githubusercontent.com/asteven/local-zfs-provisioner/master/deploy/deployment.yaml
-kubectl delete -f https://raw.githubusercontent.com/asteven/local-zfs-provisioner/master/deploy/rbac.yaml
+kubectl delete -f https://raw.githubusercontent.com/pavel-tarasenko/local-zfs-provisioner/master/deploy/deployment.yaml
+kubectl delete -f https://raw.githubusercontent.com/pavel-tarasenko/local-zfs-provisioner/master/deploy/rbac.yaml
 ```
 
 ## License
