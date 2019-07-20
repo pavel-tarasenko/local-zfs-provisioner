@@ -9,11 +9,7 @@ data:
         "nodeDatasetMap": [
             {
                 "node": "DEFAULT_PATH_FOR_NON_LISTED_NODES",
-                "dataset": "chaos/data/local-zfs-provisioner"
-            },
-            {
-                "node": "that-other-node",
-                "dataset": "tank/local-zfs-provisioner"
+                "dataset": "hdd_pool/local-zfs-provisioner"
             }
         ]
     }
